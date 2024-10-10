@@ -1,48 +1,51 @@
-document.getElementById('uploadForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Get the file input
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
-    
-    if (!file) {
-        alert('Please upload a PDF file.');
+// Define the API endpoint for PDF to Word conversion
+const apiEndpoint = "https://api.pdf.co/v1/pdf/convert/to/doc";
+const apiKey = "hindihelphub3@gmail.com_A8eyMGHbK9ayQMxFiuFmh9nTtrY6URRDGK38mNDW3iLzi5IBoo3zp9yB0X18qljc";
+
+// Get the file input and form elements
+const fileInput = document.getElementById('fileInput');
+const statusMessage = document.getElementById('statusMessage');
+const downloadLink = document.getElementById('downloadLink');
+
+// Listen for form submission
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form from reloading the page
+
+    // Ensure a file is selected
+    if (fileInput.files.length === 0) {
+        statusMessage.textContent = "Please select a PDF file to convert.";
         return;
     }
-    
-    const statusMessage = document.getElementById('statusMessage');
-    statusMessage.innerText = 'Converting, please wait...';
-    
-    try {
-        // Prepare form data for API request
-        const formData = new FormData();
-        formData.append('file', file);
-        
-        // Make API call to PDF.co or any other PDF-to-Word API
-        const apiKey = 'YOUR_PDFCO_API_KEY'; // Replace with your API key
-        const response = await fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
-            method: 'POST',
-            headers: {
-                'x-api-key': hindihelphub3@gmail.com_A8eyMGHbK9ayQMxFiuFmh9nTtrY6URRDGK38mNDW3iLzi5IBoo3zp9yB0X18qljc
-            },
-            body: formData
-        });
-        
-        const result = await response.json();
-        
-        if (result.error) {
-            statusMessage.innerText = 'Conversion failed: ' + result.message;
-            return;
+
+    // Prepare the file for upload
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    // Show loading message while converting
+    statusMessage.textContent = "Converting... Please wait.";
+
+    // Make the request to PDF.co API
+    fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+            "x-api-key": apiKey // Add the API key in the header
+        },
+        body: formData
+    })
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        if (data.error) {
+            // If there's an error in the response, show it
+            statusMessage.textContent = `Conversion failed: ${data.message}`;
+        } else {
+            // If successful, show the download link for the converted Word document
+            downloadLink.href = data.url;
+            downloadLink.style.display = 'block';
+            statusMessage.textContent = "Conversion successful! Click the link to download your Word file.";
         }
-        
-        // Show download link for the Word file
-        const downloadLink = document.getElementById('downloadLink');
-        downloadLink.href = result.url;
-        downloadLink.style.display = 'inline';
-        downloadLink.innerText = 'Download Word File';
-        statusMessage.innerText = 'Conversion successful!';
-        
-    } catch (error) {
-        statusMessage.innerText = 'An error occurred during conversion.';
-    }
+    })
+    .catch(error => {
+        // Handle any network or other errors
+        statusMessage.textContent = `Error: ${error.message}`;
+    });
 });

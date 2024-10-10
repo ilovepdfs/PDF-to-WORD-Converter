@@ -30,7 +30,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
-                'x-api-key': hindihelphub3@gmail.com_A8eyMGHbK9ayQMxFiuFmh9nTtrY6URRDGK38mNDW3iLzi5IBoo3zp9yB0X18qljc // Add the API key in the header
+                'x-api-key': _31oVEyy9Ec3XYfR1RhzAFxPzTcTleDH3d9RdSEgvXZ0c8esht2md0WDM0e39DsK8 // Add the API key in the header
             },
             body: formData
         });

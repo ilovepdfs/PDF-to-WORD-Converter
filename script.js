@@ -1,6 +1,6 @@
 // Define the API endpoint and API key for PDF to Word conversion
 const apiEndpoint = "https://api.pdf.co/v1/pdf/convert/to/doc";
-const apiKey = "hindihelphub3@gmail.com_A8eyMGHbK9ayQMxFiuFmh9nTtrY6URRDGK38mNDW3iLzi5IBoo3zp9yB0X18qljc";
+const apiKey = "_31oVEyy9Ec3XYfR1RhzAFxPzTcTleDH3d9RdSEgvXZ0c8esht2md0WDM0e39DsK8";
 
 // Get the necessary DOM elements
 const fileInput = document.getElementById('fileInput');

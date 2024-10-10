@@ -23,7 +23,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         const response = await fetch('https://api.pdf.co/v1/pdf/convert/to/doc', {
             method: 'POST',
             headers: {
-                'x-api-key': apiKey
+                'x-api-key': hindihelphub3@gmail.com_A8eyMGHbK9ayQMxFiuFmh9nTtrY6URRDGK38mNDW3iLzi5IBoo3zp9yB0X18qljc
             },
             body: formData
         });

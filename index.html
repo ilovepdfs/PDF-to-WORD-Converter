@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free and fast PDF to Word Converter tool. Upload your PDF, convert it to Word (DOC/DOCX), and download it instantly.">
+    <meta name="keywords" content="PDF to Word, PDF Converter, Convert PDF, PDF to DOC, PDF to DOCX">
+    <meta name="author" content="I Love Pdf">
+    <meta name="robots" content="index, follow">
+    <title>PDF to Word Converter</title>
+    
+    <!-- Add any external CSS here -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PDF to Word Converter</h1>
+        <p>Upload your PDF and get a Word document (DOC or DOCX) instantly!</p>
+
+        <!-- File upload form -->
+        <form id="uploadForm">
+            <label for="fileInput">Choose PDF file:</label>
+            <input type="file" id="fileInput" accept=".pdf" required>
+            <button type="submit">Convert to Word</button>
+        </form>
+
+        <!-- Conversion status and download link -->
+        <div id="statusMessage"></div>
+        <a id="downloadLink" href="#" style="display: none;" download>Download Word File</a>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
